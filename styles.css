@@ -76,8 +76,8 @@ button {
   color: var(--timer-color);
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   position: relative;
-  width: 400px;
-  height: 400px;
+  width: 460px;
+  height: 460px;
   margin: 0 auto 80px;
   display: flex;
   justify-content: center;
