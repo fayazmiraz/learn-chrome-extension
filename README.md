@@ -1,9 +1,11 @@
 # Learn Chrome Extension
 
-Learn to build a Chrome Browser Extension with a simple digital countdown timer.
+Learn to build a Chrome Browser Extension with a simple digital countdown timer in the new Tab.
+Follow along with the commits to see the changes.
 
 ## Features
 
+- Vanilla JavaScript to keep things simple
 - Pomodoro style timer with work and rest intervals
 - Customizable work and rest durations
 - Dark and light theme toggle
