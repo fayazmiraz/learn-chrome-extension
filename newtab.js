@@ -1,10 +1,25 @@
 let timer;
 let isRunning = false;
 let isPaused = false;
-let timeLeft = 10; // 60 seconds countdown
+let timeLeft = 10; // 10 seconds countdown
+const totalTime = timeLeft;
+
+function formatTime(seconds) {
+  const hrs = String(Math.floor(seconds / 3600)).padStart(2, '0');
+  const mins = String(Math.floor((seconds % 3600) / 60)).padStart(2, '0');
+  const secs = String(seconds % 60).padStart(2, '0');
+  return `${hrs}:${mins}:${secs}`;
+}
 
 function updateTimerDisplay() {
-  document.getElementById('timer').textContent = timeLeft + 's';
+  document.getElementById('timer').querySelector('span').textContent = formatTime(timeLeft);
+  const progress = (1 - timeLeft / totalTime) * 100;
+  const circle = document.querySelector('.circle-progress');
+  const radius = circle.r.baseVal.value;
+  const circumference = radius * 2 * Math.PI;
+  const offset = circumference - (progress / 100) * circumference;
+  circle.style.strokeDasharray = `${circumference} ${circumference}`;
+  circle.style.strokeDashoffset = offset;
 }
 
 function startTimer() {
