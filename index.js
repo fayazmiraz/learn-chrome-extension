@@ -113,6 +113,7 @@ function stopTimer() {
   timeLeft = workTimeStart;
   totalTime = workTimeStart;
   updateTimerDisplay();
+  document.getElementById('pauseButton').textContent = 'Pause';
   document.getElementById('startButton').style.display = 'inline-block';
   document.getElementById('pauseButton').style.display = 'none';
   document.getElementById('stopButton').style.display = 'none';
