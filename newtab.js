@@ -1,7 +1,8 @@
 let timer;
 let isRunning = false;
 let isPaused = false;
-let timeLeft = 10; // 10 seconds countdown
+const timeStart = 300; // 5 minutes
+let timeLeft = timeStart;
 const totalTime = timeLeft;
 
 function formatTime(seconds) {
@@ -33,7 +34,7 @@ function startTimer() {
       document.getElementById('startButton').style.display = 'inline-block';
       document.getElementById('pauseButton').style.display = 'none';
       document.getElementById('stopButton').style.display = 'none';
-      timeLeft = 10;
+      timeLeft = timeStart;
       updateTimerDisplay();
     }
   }, 1000);
@@ -64,7 +65,7 @@ function stopTimer() {
   clearInterval(timer);
   isRunning = false;
   isPaused = false;
-  timeLeft = 10;
+  timeLeft = timeStart;
   updateTimerDisplay();
   document.getElementById('startButton').style.display = 'inline-block';
   document.getElementById('pauseButton').style.display = 'none';
