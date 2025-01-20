@@ -253,8 +253,36 @@ button {
 .log-container {
   text-align: center;
   font-size: 1.5rem;
-  color: #333;
-  height: 734px; /* Match the height of the button-container */
+  color: #245b26;
+  height: 734px;
+}
+
+.log-table {
+  width: 100%;
+  max-width: 460px;
+  margin: 0 auto;
+  border-collapse: collapse;
+  border: 2px solid #ddd;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+.log-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.log-table th, .log-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+.log-table th {
+  background-color: #4caf50;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 @media (min-width: 768px) {
@@ -294,4 +322,12 @@ body.dark {
 
 body.dark .button-container {
   background: linear-gradient(135deg, #282c34, #6174fb);
+}
+
+body.dark .log-container {
+  color: #ffca29;
+}
+
+body.dark .log-table th {
+  color: #282c34;
 }
