@@ -1,5 +1,6 @@
 body {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
@@ -9,13 +10,21 @@ body {
   color: var(--text-color);
 }
 
+h1 {
+  font-size: 4vw;
+  color: var(--text-color);
+  margin-bottom: 20px;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
 #message {
   font-size: 48px;
   color: #333;
 }
 
 button {
-  font-size: 24px;
+  font-size: 2vw;
   padding: 10px 20px;
   cursor: pointer;
   border: none;
@@ -72,13 +81,15 @@ button {
 }
 
 .timer {
-  font-size: 72px;
+  font-size: 8vw;
   color: var(--timer-color);
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   position: relative;
-  width: 460px;
-  height: 460px;
-  margin: 0 auto 80px;
+  width: 80vw;
+  height: 80vw;
+  max-width: 460px;
+  max-height: 460px;
+  margin: 0 auto 30px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -118,7 +129,8 @@ button {
   border-radius: 10px;
   padding: 20px;
   display: inline-block;
-  width: 350px;
+  width: 90vw;
+  max-width: 350px;
 }
 
 .timer-button {
@@ -168,7 +180,26 @@ button {
 #workTimeLabel,
 #restTimeLabel {
   margin-top: 10px;
-  font-size: 18px;
+  font-size: 2vw;
+}
+
+@media (min-width: 768px) {
+  h1 {
+    font-size: 2vw;
+  }
+
+  button {
+    font-size: 1.5vw;
+  }
+
+  .timer {
+    font-size: 4vw;
+  }
+
+  #workTimeLabel,
+  #restTimeLabel {
+    font-size: 1.5vw;
+  }
 }
 
 :root {

@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Hello New Tab",
+  "name": "Rest IT",
   "version": "1.0",
-  "description": "Overrides the new tab page with a simple hello message.",
+  "description": "A pomodoro style Rest IT timer in new tab.",
   "chrome_url_overrides": {
     "newtab": "newtab.html"
   },
