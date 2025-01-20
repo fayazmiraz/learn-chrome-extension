@@ -84,6 +84,8 @@ function toggleTimer() {
   document.getElementById('startButton').style.display = 'none';
   document.getElementById('pauseButton').style.display = 'inline-block';
   document.getElementById('stopButton').style.display = 'inline-block';
+  document.getElementById('workTimeSlider').disabled = true;
+  document.getElementById('restTimeSlider').disabled = true;
 }
 
 function stopTimer() {
@@ -111,7 +113,7 @@ function toggleTheme() {
 
 function updateWorkTime() {
   workTimeStart = parseInt(document.getElementById('workTimeSlider').value, 10);
-  if (isWorkTime) {
+  if (!isRunning && !isPaused && isWorkTime) {
     timeLeft = workTimeStart;
     totalTime = workTimeStart;
     updateTimerDisplay();
@@ -121,7 +123,7 @@ function updateWorkTime() {
 
 function updateRestTime() {
   restTimeStart = parseInt(document.getElementById('restTimeSlider').value, 10);
-  if (!isWorkTime) {
+  if (!isRunning && !isPaused && !isWorkTime) {
     timeLeft = restTimeStart;
     totalTime = restTimeStart;
     updateTimerDisplay();
