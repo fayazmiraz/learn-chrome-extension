@@ -29,6 +29,7 @@ button {
 
 #startButton {
   background-color: #4caf50;
+  width: 310px;
 }
 
 #startButton:hover {
@@ -109,7 +110,15 @@ button {
   transform-origin: 50% 50%;
 }
 
-.start-button {
+.button-container {
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  display: inline-block;
+  width: 350px;
+}
+
+.timer-button {
   display: inline-block;
   padding: 10px 20px;
   font-size: 1rem;
@@ -122,6 +131,6 @@ button {
   cursor: pointer;
 }
 
-.start-button:hover {
+.timer-button:hover {
   background-color: #d64d4d;
 }
