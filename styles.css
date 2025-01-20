@@ -82,11 +82,11 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: color 0.5s ease-in-out;
 }
 
 .timer span {
   position: absolute;
-  transition: transform 0.35s ease, opacity 0.35s ease;
 }
 
 .timer svg {
@@ -105,12 +105,12 @@ button {
 
 .timer .circle-progress {
   fill: none;
-  stroke: #e57373;
+  stroke: var(--timer-color);
   stroke-width: 8;
   stroke-linecap: round;
   transform: rotate(-90deg);
   transform-origin: 50% 50%;
-  transition: stroke-dashoffset 0.5s ease-in-out;
+  transition: stroke-dashoffset 0.5s ease-in-out, stroke 0.5s ease-in-out;
 }
 
 .button-container {
@@ -159,10 +159,20 @@ button {
   margin-right: 10px;
 }
 
+#startTimeSlider {
+  width: 100%;
+  margin-top: 20px;
+}
+
+#startTimeLabel {
+  margin-top: 10px;
+  font-size: 18px;
+}
+
 :root {
   --background-color: #f5f5f5;
   --text-color: #282c34;
-  --timer-color: #61dafb;
+  --timer-color: #4caf50;
   --toggle-bg-color: #61dafb;
   --toggle-text-color: #282c34;
 }
@@ -170,7 +180,7 @@ button {
 body.dark {
   --background-color: #282c34;
   --text-color: #f5f5f5;
-  --timer-color: #61dafb;
+  --timer-color: #4caf50;
   --toggle-bg-color: #282c34;
   --toggle-text-color: #f5f5f5;
 }

@@ -1,9 +1,9 @@
 let timer;
 let isRunning = false;
 let isPaused = false;
-const timeStart = 300; // 5 minutes
+let timeStart = 300; // 5 minutes
 let timeLeft = timeStart;
-const totalTime = timeLeft;
+let totalTime = timeLeft;
 
 function formatTime(seconds) {
   const hrs = String(Math.floor(seconds / 3600)).padStart(2, '0');
@@ -31,6 +31,18 @@ function updateTimerDisplay() {
       timerSpan.style.transform = 'scale(1)';
     }, { once: true });
   });
+
+  const timerContainer = document.getElementById('timer');
+  if (timeLeft > totalTime * 0.5) {
+    timerContainer.style.color = '#4caf50'; // Green
+    circle.style.stroke = '#4caf50';
+  } else if (timeLeft > totalTime * 0.2) {
+    timerContainer.style.color = '#ffb74d'; // Orange
+    circle.style.stroke = '#ffb74d';
+  } else {
+    timerContainer.style.color = '#e57373'; // Red
+    circle.style.stroke = '#e57373';
+  }
 }
 
 function startTimer() {
@@ -44,7 +56,9 @@ function startTimer() {
       document.getElementById('startButton').style.display = 'inline-block';
       document.getElementById('pauseButton').style.display = 'none';
       document.getElementById('stopButton').style.display = 'none';
+      document.getElementById('startTimeSlider').disabled = false;
       timeLeft = timeStart;
+      totalTime = timeStart;
       updateTimerDisplay();
     }
   }, 1000);
@@ -69,6 +83,7 @@ function toggleTimer() {
   document.getElementById('startButton').style.display = 'none';
   document.getElementById('pauseButton').style.display = 'inline-block';
   document.getElementById('stopButton').style.display = 'inline-block';
+  document.getElementById('startTimeSlider').disabled = true;
 }
 
 function stopTimer() {
@@ -76,10 +91,12 @@ function stopTimer() {
   isRunning = false;
   isPaused = false;
   timeLeft = timeStart;
+  totalTime = timeStart;
   updateTimerDisplay();
   document.getElementById('startButton').style.display = 'inline-block';
   document.getElementById('pauseButton').style.display = 'none';
   document.getElementById('stopButton').style.display = 'none';
+  document.getElementById('startTimeSlider').disabled = false;
 }
 
 function toggleTheme() {
@@ -90,10 +107,19 @@ function toggleTheme() {
   iconEl.textContent = isDark ? String.fromCodePoint(0x1F319) : String.fromCodePoint(0x2600);
 }
 
+function updateStartTime() {
+  timeStart = parseInt(document.getElementById('startTimeSlider').value, 10);
+  timeLeft = timeStart;
+  totalTime = timeStart;
+  updateTimerDisplay();
+  document.getElementById('startTimeLabel').textContent = `Start Time: ${formatTime(timeStart)}`;
+}
+
 document.getElementById('startButton').addEventListener('click', toggleTimer);
 document.getElementById('pauseButton').addEventListener('click', toggleTimer);
 document.getElementById('stopButton').addEventListener('click', stopTimer);
 document.getElementById('themeToggle').addEventListener('click', toggleTheme);
+document.getElementById('startTimeSlider').addEventListener('input', updateStartTime);
 
 if (
   localStorage.getItem('theme') === 'dark' ||
