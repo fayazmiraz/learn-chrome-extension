@@ -142,12 +142,26 @@ function updateRestTime() {
   document.getElementById('restTimeLabel').textContent = `Rest Time: ${formatTime(restTimeStart)}`;
 }
 
+function switchTab(event) {
+  const tabContents = document.querySelectorAll('.tab-content');
+  tabContents.forEach(content => content.classList.remove('active'));
+  document.getElementById(event.target.dataset.tab).classList.add('active');
+
+  const tabs = document.querySelectorAll('.tab');
+  tabs.forEach(tab => tab.classList.remove('active'));
+  event.target.classList.add('active');
+}
+
 document.getElementById('startButton').addEventListener('click', toggleTimer);
 document.getElementById('pauseButton').addEventListener('click', toggleTimer);
 document.getElementById('stopButton').addEventListener('click', stopTimer);
 document.getElementById('themeToggle').addEventListener('click', toggleTheme);
 document.getElementById('workTimeSlider').addEventListener('input', updateWorkTime);
 document.getElementById('restTimeSlider').addEventListener('input', updateRestTime);
+
+document.querySelectorAll('.tab').forEach(tab => {
+  tab.addEventListener('click', switchTab);
+});
 
 if (
   localStorage.getItem('theme') === 'dark' ||

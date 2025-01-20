@@ -141,7 +141,7 @@ button {
   width: 90vw;
   max-width: 460px;
   height: 200px;
-  background: linear-gradient(207deg, #3068a3, #6d8f1c)
+  background: linear-gradient(207deg, #3068a3, #6d8f1c);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
@@ -208,6 +208,46 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.tab {
+  padding: 10px 20px;
+  cursor: pointer;
+  border: none;
+  border-radius: 10px;
+  margin: 0 10px;
+  background-color: #4caf50;
+  color: white;
+  font-size: 1.5rem;
+  transition: background-color 0.3s;
+}
+
+.tab:hover {
+  background-color: #45a049;
+}
+
+.tab.active {
+  background-color: #388e3c;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+.log-container {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #333;
 }
 
 @media (min-width: 768px) {

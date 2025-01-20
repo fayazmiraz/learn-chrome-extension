@@ -4,7 +4,7 @@
   "version": "1.0",
   "description": "A pomodoro style Rest IT timer in new tab.",
   "chrome_url_overrides": {
-    "newtab": "newtab.html"
+    "newtab": "index.html"
   },
   "permissions": [],
   "icons": {

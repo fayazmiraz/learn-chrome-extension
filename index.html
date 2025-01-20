@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rest IT! 🧠</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <h1>Rest IT! 🧠</h1>
+    <button id="themeToggle">
+        <span class="icon"></span>
+    </button>
+    <div class="tabs">
+        <button class="tab active" data-tab="timerTab">Timer</button>
+        <button class="tab" data-tab="logTab">Log</button>
+    </div>
+    <div id="timerTab" class="tab-content active">
+        <div class="timer-container">
+            <div id="timer" class="timer">
+                <span>00:00:10</span>
+                <svg>
+                    <circle class="circle-bg" cx="50%" cy="50%" r="45%"></circle>
+                    <circle class="circle-progress" cx="50%" cy="50%" r="45%"></circle>
+                </svg>
+            </div>
+            <div class="button-container">
+                <button id="startButton" class="timer-button">Start</button>
+                <button id="pauseButton" class="timer-button">Pause</button>
+                <button id="stopButton" class="timer-button">Stop</button>
+                <input type="range" id="workTimeSlider" min="5" max="3600" value="300">
+                <div id="workTimeLabel">Work Time: 00:05:00</div>
+                <input type="range" id="restTimeSlider" min="5" max="3600" value="60">
+                <div id="restTimeLabel">Rest Time: 00:01:00</div>
+                <div id="statusMessage" class="status-message"></div>
+            </div>
+        </div>
+    </div>
+    <div id="logTab" class="tab-content">
+        <div class="log-container">
+            Log
+        </div>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>
