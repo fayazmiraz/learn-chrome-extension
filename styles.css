@@ -21,36 +21,34 @@ body {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-#toggleButton {
+button {
   font-size: 24px;
   padding: 10px 20px;
   cursor: pointer;
-  background-color: #61dafb;
   border: none;
   border-radius: 5px;
   color: #282c34;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s, transform 0.3s;
+  width: 150px;
+  height: 50px;
+  margin: 5px;
 }
 
-#toggleButton:hover {
-  background-color: #21a1f1;
+#startButton {
+  background-color: #4caf50;
 }
 
-#toggleButton:active {
+#startButton:hover {
+  background-color: #45a049;
+}
+
+#startButton:active {
   transform: scale(0.95);
 }
 
 #pauseButton {
-  font-size: 24px;
-  padding: 10px 20px;
-  cursor: pointer;
   background-color: #ffb74d;
-  border: none;
-  border-radius: 5px;
-  color: #282c34;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.3s, transform 0.3s;
   display: none;
 }
 
@@ -63,15 +61,7 @@ body {
 }
 
 #stopButton {
-  font-size: 24px;
-  padding: 10px 20px;
-  cursor: pointer;
   background-color: #e57373;
-  border: none;
-  border-radius: 5px;
-  color: #282c34;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.3s, transform 0.3s;
   display: none;
 }
 
