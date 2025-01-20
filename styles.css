@@ -5,7 +5,8 @@ body {
   height: 100vh;
   margin: 0;
   font-family: Arial, sans-serif;
-  background-color: #f5f5f5;
+  background-color: var(--background-color);
+  color: var(--text-color);
 }
 
 #message {
@@ -72,7 +73,7 @@ button {
 
 .timer {
   font-size: 72px;
-  color: #61dafb;
+  color: var(--timer-color);
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   position: relative;
   width: 400px;
@@ -133,4 +134,41 @@ button {
 
 .timer-button:hover {
   background-color: #d64d4d;
+}
+
+#themeToggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: var(--toggle-bg-color);
+  color: var(--toggle-text-color);
+  border: none;
+  border-radius: 20px;
+  padding: 10px 10px 10px 20px;
+  cursor: pointer;
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+}
+
+#themeToggle .icon {
+  margin-right: 10px;
+}
+
+:root {
+  --background-color: #f5f5f5;
+  --text-color: #282c34;
+  --timer-color: #61dafb;
+  --toggle-bg-color: #61dafb;
+  --toggle-text-color: #282c34;
+}
+
+body.dark {
+  --background-color: #282c34;
+  --text-color: #f5f5f5;
+  --timer-color: #61dafb;
+  --toggle-bg-color: #282c34;
+  --toggle-text-color: #f5f5f5;
 }

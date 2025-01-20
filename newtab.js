@@ -72,7 +72,27 @@ function stopTimer() {
   document.getElementById('stopButton').style.display = 'none';
 }
 
+function toggleTheme() {
+  document.body.classList.toggle('dark');
+  const isDark = document.body.classList.contains('dark');
+  localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  const iconEl = document.getElementById('themeToggle').querySelector('.icon');
+  iconEl.textContent = isDark ? String.fromCodePoint(0x1F319) : String.fromCodePoint(0x2600);
+}
+
 document.getElementById('startButton').addEventListener('click', toggleTimer);
 document.getElementById('pauseButton').addEventListener('click', toggleTimer);
 document.getElementById('stopButton').addEventListener('click', stopTimer);
+document.getElementById('themeToggle').addEventListener('click', toggleTheme);
+
+if (
+  localStorage.getItem('theme') === 'dark' ||
+  (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)
+) {
+  document.body.classList.add('dark');
+  document.getElementById('themeToggle').querySelector('.icon').textContent = String.fromCodePoint(0x1F319);
+} else {
+  document.getElementById('themeToggle').querySelector('.icon').textContent = String.fromCodePoint(0x2600);
+}
+
 updateTimerDisplay();
