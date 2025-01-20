@@ -21,6 +21,16 @@ function updateTimerDisplay() {
   const offset = circumference - (progress / 100) * circumference;
   circle.style.strokeDasharray = `${circumference} ${circumference}`;
   circle.style.strokeDashoffset = offset;
+
+  const timerSpan = document.getElementById('timer').querySelector('span');
+  timerSpan.style.opacity = 0;
+  timerSpan.style.transform = 'scale(1.2)';
+  requestAnimationFrame(() => {
+    timerSpan.style.opacity = 1;
+    timerSpan.addEventListener('transitionend', () => {
+      timerSpan.style.transform = 'scale(1)';
+    }, { once: true });
+  });
 }
 
 function startTimer() {
