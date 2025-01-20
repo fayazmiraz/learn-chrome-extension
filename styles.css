@@ -41,6 +41,48 @@ body {
   transform: scale(0.95);
 }
 
+#pauseButton {
+  font-size: 24px;
+  padding: 10px 20px;
+  cursor: pointer;
+  background-color: #ffb74d;
+  border: none;
+  border-radius: 5px;
+  color: #282c34;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, transform 0.3s;
+  display: none;
+}
+
+#pauseButton:hover {
+  background-color: #ffa726;
+}
+
+#pauseButton:active {
+  transform: scale(0.95);
+}
+
+#stopButton {
+  font-size: 24px;
+  padding: 10px 20px;
+  cursor: pointer;
+  background-color: #e57373;
+  border: none;
+  border-radius: 5px;
+  color: #282c34;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, transform 0.3s;
+  display: none;
+}
+
+#stopButton:hover {
+  background-color: #d64d4d;
+}
+
+#stopButton:active {
+  transform: scale(0.95);
+}
+
 body {
   display: flex;
   justify-content: center;
