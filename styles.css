@@ -159,12 +159,14 @@ button {
   margin-right: 10px;
 }
 
-#startTimeSlider {
+#workTimeSlider,
+#restTimeSlider {
   width: 100%;
   margin-top: 20px;
 }
 
-#startTimeLabel {
+#workTimeLabel,
+#restTimeLabel {
   margin-top: 10px;
   font-size: 18px;
 }

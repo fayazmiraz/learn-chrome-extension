@@ -1,8 +1,10 @@
 let timer;
 let isRunning = false;
 let isPaused = false;
-let timeStart = 300; // 5 minutes
-let timeLeft = timeStart;
+let isWorkTime = true;
+let workTimeStart = 300; // 5 minutes
+let restTimeStart = 60; // 1 minute
+let timeLeft = workTimeStart;
 let totalTime = timeLeft;
 
 function formatTime(seconds) {
@@ -21,16 +23,6 @@ function updateTimerDisplay() {
   const offset = circumference - (progress / 100) * circumference;
   circle.style.strokeDasharray = `${circumference} ${circumference}`;
   circle.style.strokeDashoffset = offset;
-
-  const timerSpan = document.getElementById('timer').querySelector('span');
-  timerSpan.style.opacity = 0;
-  timerSpan.style.transform = 'scale(1.2)';
-  requestAnimationFrame(() => {
-    timerSpan.style.opacity = 1;
-    timerSpan.addEventListener('transitionend', () => {
-      timerSpan.style.transform = 'scale(1)';
-    }, { once: true });
-  });
 
   const timerContainer = document.getElementById('timer');
   if (timeLeft > totalTime * 0.5) {
@@ -52,14 +44,23 @@ function startTimer() {
       updateTimerDisplay();
     } else {
       clearInterval(timer);
-      isRunning = false;
-      document.getElementById('startButton').style.display = 'inline-block';
-      document.getElementById('pauseButton').style.display = 'none';
-      document.getElementById('stopButton').style.display = 'none';
-      document.getElementById('startTimeSlider').disabled = false;
-      timeLeft = timeStart;
-      totalTime = timeStart;
-      updateTimerDisplay();
+      if (isWorkTime) {
+        isWorkTime = false;
+        timeLeft = restTimeStart;
+        totalTime = restTimeStart;
+        startTimer();
+      } else {
+        isWorkTime = true;
+        document.getElementById('startButton').style.display = 'inline-block';
+        document.getElementById('pauseButton').style.display = 'none';
+        document.getElementById('stopButton').style.display = 'none';
+        document.getElementById('workTimeSlider').disabled = false;
+        document.getElementById('restTimeSlider').disabled = false;
+        timeLeft = workTimeStart;
+        totalTime = workTimeStart;
+        isRunning = false;
+        updateTimerDisplay();
+      }
     }
   }, 1000);
 }
@@ -83,20 +84,21 @@ function toggleTimer() {
   document.getElementById('startButton').style.display = 'none';
   document.getElementById('pauseButton').style.display = 'inline-block';
   document.getElementById('stopButton').style.display = 'inline-block';
-  document.getElementById('startTimeSlider').disabled = true;
 }
 
 function stopTimer() {
   clearInterval(timer);
   isRunning = false;
   isPaused = false;
-  timeLeft = timeStart;
-  totalTime = timeStart;
+  isWorkTime = true;
+  timeLeft = workTimeStart;
+  totalTime = workTimeStart;
   updateTimerDisplay();
   document.getElementById('startButton').style.display = 'inline-block';
   document.getElementById('pauseButton').style.display = 'none';
   document.getElementById('stopButton').style.display = 'none';
-  document.getElementById('startTimeSlider').disabled = false;
+  document.getElementById('workTimeSlider').disabled = false;
+  document.getElementById('restTimeSlider').disabled = false;
 }
 
 function toggleTheme() {
@@ -107,19 +109,32 @@ function toggleTheme() {
   iconEl.textContent = isDark ? String.fromCodePoint(0x1F319) : String.fromCodePoint(0x2600);
 }
 
-function updateStartTime() {
-  timeStart = parseInt(document.getElementById('startTimeSlider').value, 10);
-  timeLeft = timeStart;
-  totalTime = timeStart;
-  updateTimerDisplay();
-  document.getElementById('startTimeLabel').textContent = `Start Time: ${formatTime(timeStart)}`;
+function updateWorkTime() {
+  workTimeStart = parseInt(document.getElementById('workTimeSlider').value, 10);
+  if (isWorkTime) {
+    timeLeft = workTimeStart;
+    totalTime = workTimeStart;
+    updateTimerDisplay();
+  }
+  document.getElementById('workTimeLabel').textContent = `Work Time: ${formatTime(workTimeStart)}`;
+}
+
+function updateRestTime() {
+  restTimeStart = parseInt(document.getElementById('restTimeSlider').value, 10);
+  if (!isWorkTime) {
+    timeLeft = restTimeStart;
+    totalTime = restTimeStart;
+    updateTimerDisplay();
+  }
+  document.getElementById('restTimeLabel').textContent = `Rest Time: ${formatTime(restTimeStart)}`;
 }
 
 document.getElementById('startButton').addEventListener('click', toggleTimer);
 document.getElementById('pauseButton').addEventListener('click', toggleTimer);
 document.getElementById('stopButton').addEventListener('click', stopTimer);
 document.getElementById('themeToggle').addEventListener('click', toggleTheme);
-document.getElementById('startTimeSlider').addEventListener('input', updateStartTime);
+document.getElementById('workTimeSlider').addEventListener('input', updateWorkTime);
+document.getElementById('restTimeSlider').addEventListener('input', updateRestTime);
 
 if (
   localStorage.getItem('theme') === 'dark' ||
