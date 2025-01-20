@@ -37,24 +37,29 @@ function updateTimerDisplay() {
     timerContainer.style.color = '#e57373'; // Red
     circle.style.stroke = '#e57373';
   }
+
+  updateLog();
 }
 
 function startTimer() {
   timer = setInterval(() => {
     if (timeLeft > 0) {
       timeLeft--;
+      if (isWorkTime) {
+        totalWorkTime++;
+      } else {
+        totalRestTime++;
+      }
       updateTimerDisplay();
     } else {
       clearInterval(timer);
       if (isWorkTime) {
-        totalWorkTime += workTimeStart;
         isWorkTime = false;
         timeLeft = restTimeStart;
         totalTime = restTimeStart;
         document.getElementById('statusMessage').textContent = 'Resting!';
         startTimer();
       } else {
-        totalRestTime += restTimeStart;
         isWorkTime = true;
         document.getElementById('startButton').style.display = 'inline-block';
         document.getElementById('pauseButton').style.display = 'none';
@@ -68,7 +73,6 @@ function startTimer() {
         isRunning = false;
         document.getElementById('statusMessage').textContent = '';
         updateTimerDisplay();
-        updateLog();
       }
     }
   }, 1000);
@@ -103,12 +107,6 @@ function toggleTimer() {
 
 function stopTimer() {
   clearInterval(timer);
-  // If we're stopping mid-session, add the time that has elapsed
-  if (isWorkTime && !isPaused) {
-    totalWorkTime += (workTimeStart - timeLeft);
-  } else if (!isWorkTime && !isPaused) {
-    totalRestTime += (restTimeStart - timeLeft);
-  }
   isRunning = false;
   isPaused = false;
   isWorkTime = true;
@@ -123,7 +121,7 @@ function stopTimer() {
   document.getElementById('workTimeLabel').style.display = 'block';
   document.getElementById('restTimeLabel').style.display = 'block';
   document.getElementById('statusMessage').textContent = '';
-  updateLog();
+
 }
 
 function toggleTheme() {
@@ -191,4 +189,3 @@ if (
 }
 
 updateTimerDisplay();
-updateLog();
