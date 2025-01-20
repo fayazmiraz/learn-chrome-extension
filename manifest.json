@@ -1,0 +1,13 @@
+{
+  "manifest_version": 3,
+  "name": "Hello New Tab",
+  "version": "1.0",
+  "description": "Overrides the new tab page with a simple hello message.",
+  "chrome_url_overrides": {
+    "newtab": "newtab.html"
+  },
+  "permissions": [],
+  "icons": {
+    "48": "icon48.png"
+  }
+}
