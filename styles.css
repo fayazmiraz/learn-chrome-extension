@@ -5,7 +5,7 @@ body {
   align-items: center;
   height: 100vh;
   margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: 'Brush Script MT', cursive;
   background-color: var(--background-color);
   color: var(--text-color);
   overflow-y: auto;
@@ -16,8 +16,7 @@ h1 {
   color: var(--text-color);
   margin-bottom: 20px;
   text-align: center;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-  font-family: 'Brush Script MT', cursive;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
   letter-spacing: 2px;
   background: linear-gradient(90deg, #ff8a00, #e52e71);
   -webkit-background-clip: text;
@@ -35,9 +34,9 @@ button {
   padding: 10px 20px;
   cursor: pointer;
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
   color: #282c34;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   transition: background-color 0.3s, transform 0.3s;
   width: 150px;
   height: 50px;
@@ -118,13 +117,13 @@ button {
 .timer .circle-bg {
   fill: none;
   stroke: #ddd;
-  stroke-width: 8;
+  stroke-width: 10;
 }
 
 .timer .circle-progress {
   fill: none;
   stroke: var(--timer-color);
-  stroke-width: 8;
+  stroke-width: 20;
   stroke-linecap: round;
   transform: rotate(-90deg);
   transform-origin: 50% 50%;
@@ -133,7 +132,7 @@ button {
 
 .button-container {
   border: 2px solid #ddd;
-  border-radius: 10px;
+  border-radius: 20px;
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -142,6 +141,8 @@ button {
   width: 90vw;
   max-width: 460px;
   height: 200px;
+  background: linear-gradient(207deg, #3068a3, #6d8f1c)
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 .timer-button {
@@ -191,14 +192,15 @@ button {
 #workTimeLabel,
 #restTimeLabel {
   margin-top: 10px;
-  font-size: 2vw;
+  font-size: 20px;
+  color: white;
 }
 
 .status-message {
   font-size: 30px;
   font-family: 'Brush Script MT', cursive;
-  color: var(--text-color);
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
   margin-top: 10px;
   width: 100%;
   text-align: center;
@@ -241,4 +243,8 @@ body.dark {
   --timer-color: #4caf50;
   --toggle-bg-color: #282c34;
   --toggle-text-color: #f5f5f5;
+}
+
+body.dark .button-container {
+  background: linear-gradient(135deg, #282c34, #6174fb);
 }
