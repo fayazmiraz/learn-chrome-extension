@@ -48,17 +48,21 @@ function startTimer() {
         isWorkTime = false;
         timeLeft = restTimeStart;
         totalTime = restTimeStart;
+        document.getElementById('statusMessage').textContent = 'Resting!';
         startTimer();
       } else {
         isWorkTime = true;
         document.getElementById('startButton').style.display = 'inline-block';
         document.getElementById('pauseButton').style.display = 'none';
         document.getElementById('stopButton').style.display = 'none';
-        document.getElementById('workTimeSlider').disabled = false;
-        document.getElementById('restTimeSlider').disabled = false;
+        document.getElementById('workTimeSlider').style.display = 'block';
+        document.getElementById('restTimeSlider').style.display = 'block';
+        document.getElementById('workTimeLabel').style.display = 'block';
+        document.getElementById('restTimeLabel').style.display = 'block';
         timeLeft = workTimeStart;
         totalTime = workTimeStart;
         isRunning = false;
+        document.getElementById('statusMessage').textContent = '';
         updateTimerDisplay();
       }
     }
@@ -71,6 +75,7 @@ function toggleTimer() {
     isRunning = false;
     isPaused = true;
     document.getElementById('pauseButton').textContent = 'Resume';
+    document.getElementById('statusMessage').textContent = isWorkTime ? 'Working (paused)!' : 'Resting (paused)!';
   } else {
     if (isPaused) {
       startTimer();
@@ -80,12 +85,15 @@ function toggleTimer() {
       startTimer();
     }
     isRunning = true;
+    document.getElementById('statusMessage').textContent = isWorkTime ? 'Working!' : 'Resting!';
   }
   document.getElementById('startButton').style.display = 'none';
   document.getElementById('pauseButton').style.display = 'inline-block';
   document.getElementById('stopButton').style.display = 'inline-block';
-  document.getElementById('workTimeSlider').disabled = true;
-  document.getElementById('restTimeSlider').disabled = true;
+  document.getElementById('workTimeSlider').style.display = 'none';
+  document.getElementById('restTimeSlider').style.display = 'none';
+  document.getElementById('workTimeLabel').style.display = 'none';
+  document.getElementById('restTimeLabel').style.display = 'none';
 }
 
 function stopTimer() {
@@ -99,8 +107,11 @@ function stopTimer() {
   document.getElementById('startButton').style.display = 'inline-block';
   document.getElementById('pauseButton').style.display = 'none';
   document.getElementById('stopButton').style.display = 'none';
-  document.getElementById('workTimeSlider').disabled = false;
-  document.getElementById('restTimeSlider').disabled = false;
+  document.getElementById('workTimeSlider').style.display = 'block';
+  document.getElementById('restTimeSlider').style.display = 'block';
+  document.getElementById('workTimeLabel').style.display = 'block';
+  document.getElementById('restTimeLabel').style.display = 'block';
+  document.getElementById('statusMessage').textContent = '';
 }
 
 function toggleTheme() {
